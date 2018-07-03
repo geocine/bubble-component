@@ -58,4 +58,109 @@ declare global {
   }
 }
 
+
+declare global {
+
+  namespace StencilComponents {
+    interface BubbleInput {
+      'placeholder': string;
+    }
+  }
+
+  interface HTMLBubbleInputElement extends StencilComponents.BubbleInput, HTMLStencilElement {}
+
+  var HTMLBubbleInputElement: {
+    prototype: HTMLBubbleInputElement;
+    new (): HTMLBubbleInputElement;
+  };
+  interface HTMLElementTagNameMap {
+    'bubble-input': HTMLBubbleInputElement;
+  }
+  interface ElementTagNameMap {
+    'bubble-input': HTMLBubbleInputElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'bubble-input': JSXElements.BubbleInputAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface BubbleInputAttributes extends HTMLAttributes {
+      'placeholder'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface BubbleMessage {
+      'message': string;
+      'time': string;
+      'user': string;
+    }
+  }
+
+  interface HTMLBubbleMessageElement extends StencilComponents.BubbleMessage, HTMLStencilElement {}
+
+  var HTMLBubbleMessageElement: {
+    prototype: HTMLBubbleMessageElement;
+    new (): HTMLBubbleMessageElement;
+  };
+  interface HTMLElementTagNameMap {
+    'bubble-message': HTMLBubbleMessageElement;
+  }
+  interface ElementTagNameMap {
+    'bubble-message': HTMLBubbleMessageElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'bubble-message': JSXElements.BubbleMessageAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface BubbleMessageAttributes extends HTMLAttributes {
+      'message'?: string;
+      'time'?: string;
+      'user'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface BubbleUser {
+      'online': boolean;
+      'user': string;
+    }
+  }
+
+  interface HTMLBubbleUserElement extends StencilComponents.BubbleUser, HTMLStencilElement {}
+
+  var HTMLBubbleUserElement: {
+    prototype: HTMLBubbleUserElement;
+    new (): HTMLBubbleUserElement;
+  };
+  interface HTMLElementTagNameMap {
+    'bubble-user': HTMLBubbleUserElement;
+  }
+  interface ElementTagNameMap {
+    'bubble-user': HTMLBubbleUserElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'bubble-user': JSXElements.BubbleUserAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface BubbleUserAttributes extends HTMLAttributes {
+      'online'?: boolean;
+      'user'?: string;
+    }
+  }
+}
+
 declare global { namespace JSX { interface StencilJSX {} } }
