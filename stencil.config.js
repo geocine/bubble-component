@@ -1,7 +1,7 @@
 const sass = require('@stencil/sass');
 
 exports.config = {
-  namespace: 'bubblechat',
+  namespace: 'bubble-chat',
   outputTargets:[
     { 
       type: 'dist' 

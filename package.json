@@ -2,7 +2,7 @@
   "name": "bubble-chat",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
-  "main": "dist/bubblechat.js",
+  "main": "dist/bubble-chat.js",
   "types": "dist/types/components.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "files": [
