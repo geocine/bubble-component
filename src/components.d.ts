@@ -27,6 +27,72 @@ declare global {
 declare global {
 
   namespace StencilComponents {
+    interface BubbleChannelList {
+      'user': string;
+    }
+  }
+
+  interface HTMLBubbleChannelListElement extends StencilComponents.BubbleChannelList, HTMLStencilElement {}
+
+  var HTMLBubbleChannelListElement: {
+    prototype: HTMLBubbleChannelListElement;
+    new (): HTMLBubbleChannelListElement;
+  };
+  interface HTMLElementTagNameMap {
+    'bubble-channel-list': HTMLBubbleChannelListElement;
+  }
+  interface ElementTagNameMap {
+    'bubble-channel-list': HTMLBubbleChannelListElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'bubble-channel-list': JSXElements.BubbleChannelListAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface BubbleChannelListAttributes extends HTMLAttributes {
+      'user'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface BubbleChannelSidebar {
+      'user': string;
+    }
+  }
+
+  interface HTMLBubbleChannelSidebarElement extends StencilComponents.BubbleChannelSidebar, HTMLStencilElement {}
+
+  var HTMLBubbleChannelSidebarElement: {
+    prototype: HTMLBubbleChannelSidebarElement;
+    new (): HTMLBubbleChannelSidebarElement;
+  };
+  interface HTMLElementTagNameMap {
+    'bubble-channel-sidebar': HTMLBubbleChannelSidebarElement;
+  }
+  interface ElementTagNameMap {
+    'bubble-channel-sidebar': HTMLBubbleChannelSidebarElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'bubble-channel-sidebar': JSXElements.BubbleChannelSidebarAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface BubbleChannelSidebarAttributes extends HTMLAttributes {
+      'user'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
     interface BubbleChat {
       'first': string;
       'last': string;
