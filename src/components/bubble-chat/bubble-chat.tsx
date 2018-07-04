@@ -7,20 +7,36 @@ import { Component, Prop } from '@stencil/core';
 })
 export class BubbleChat {
 
-  @Prop() first: string;
-  @Prop() last: string;
+  @Prop() userList: Array<any> = [];
+  @Prop() messageList: Array<any> = [];
+  @Prop() user: string;
 
   render() {
+    let users = [];
+    for (let i = 0; i < this.userList.length; i++) {
+      users.push(
+        <bubble-user user={this.userList[i].name} id={this.userList[i].id} online={true}></bubble-user>
+      );
+    }
+
+    let messages = [];
+    for(let i = 0; i < this.messageList.length; i++) {
+      // set time property
+      messages.push(
+        <bubble-message user={this.user} message={this.messageList[i].message}></bubble-message>
+      );
+    }
+
     return (
       <div class="font-sans antialiased h-screen flex">
         <div class="bg-indigo-darker text-purple-lighter flex-none w-64 pb-6 hidden md:block">
           <div class="text-white mb-2 mt-3 px-4 flex justify-between">
             <div class="flex-auto">
               <h1 class="font-semibold text-xl leading-tight mb-1 truncate">Bubble</h1>
-              <div class="flex items-center mb-6">
+              { this.user ? <div class="flex items-center mb-6">
                 <svg class="h-2 w-2 fill-current text-green mr-2" viewBox="0 0 20 20"><circle cx={10} cy={10} r={10} /></svg>
-                <span class="text-white opacity-50 text-sm">Aivan Monceller</span>
-              </div>
+                <span class="text-white opacity-50 text-sm">{this.user}</span>
+              </div> : ''}
             </div>
             <div>
               <svg class="h-6 w-6 fill-current text-white opacity-25" viewBox="0 0 20 20">
@@ -30,14 +46,14 @@ export class BubbleChat {
           </div>
           <div class="mb-8">
             <div class="px-4 mb-2 text-white flex justify-between items-center">
-              <div class="opacity-75">Online</div>
+            { this.userList.length > 0 ? <div class="opacity-75">Online</div> : ''}
               <div class="hidden">
                 <svg class="fill-current h-4 w-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <path d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2v4zm-1 11a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" />
                 </svg>
               </div>
             </div>
-            <bubble-user user="Aivan Monceller" online={true}></bubble-user>
+            {users}
           </div>
           <div class="hidden">
             <div class="px-4 mb-2 text-white flex justify-between items-center">
@@ -74,8 +90,7 @@ export class BubbleChat {
           </div>
           {/* Chat messages */}
           <div class="px-6 py-4 flex-1 overflow-y-scroll">
-            {/* A message */}
-            <bubble-message user="Aivan Monceller" time="11:46" message="Hello World"></bubble-message>
+            {messages}
           </div>
           <div class="pb-6 px-4 flex-none">
             <bubble-input></bubble-input>

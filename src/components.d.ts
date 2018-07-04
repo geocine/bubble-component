@@ -28,8 +28,9 @@ declare global {
 
   namespace StencilComponents {
     interface BubbleChat {
-      'first': string;
-      'last': string;
+      'messageList': Array<any>;
+      'user': string;
+      'userList': Array<any>;
     }
   }
 
@@ -52,8 +53,9 @@ declare global {
   }
   namespace JSXElements {
     export interface BubbleChatAttributes extends HTMLAttributes {
-      'first'?: string;
-      'last'?: string;
+      'messageList'?: Array<any>;
+      'user'?: string;
+      'userList'?: Array<any>;
     }
   }
 }
@@ -64,6 +66,7 @@ declare global {
   namespace StencilComponents {
     interface BubbleInput {
       'placeholder': string;
+      'value': string;
     }
   }
 
@@ -86,7 +89,10 @@ declare global {
   }
   namespace JSXElements {
     export interface BubbleInputAttributes extends HTMLAttributes {
+      'onValueChange'?: (event: CustomEvent) => void;
+      'onValueSubmit'?: (event: CustomEvent) => void;
       'placeholder'?: string;
+      'value'?: string;
     }
   }
 }
@@ -133,6 +139,7 @@ declare global {
 
   namespace StencilComponents {
     interface BubbleUser {
+      'id': string;
       'online': boolean;
       'user': string;
     }
@@ -157,6 +164,7 @@ declare global {
   }
   namespace JSXElements {
     export interface BubbleUserAttributes extends HTMLAttributes {
+      'id'?: string;
       'online'?: boolean;
       'user'?: string;
     }

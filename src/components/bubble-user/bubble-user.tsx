@@ -9,6 +9,7 @@ export class BubbleUser {
 
   @Prop() user: string;
   @Prop() online: boolean;
+  @Prop() id: string;
 
   render() {
     let circle;
