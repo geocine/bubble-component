@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, Element, EventEmitter, Event } from '@stencil/core';
 
 @Component({
   tag: 'bubble-chat',
@@ -7,9 +7,26 @@ import { Component, Prop } from '@stencil/core';
 })
 export class BubbleChat {
 
+  @Element() el: HTMLElement;
   @Prop() userList: Array<any> = [];
   @Prop() messageList: Array<any> = [];
   @Prop() user: string;
+  @Event() chatSubmit: EventEmitter;
+  @Prop() chatValue: string;
+  @Prop() chatPlaceHolder: string;
+
+  componentDidUpdate(){
+    setTimeout(() => {this.goToBottomMessages();},100);
+  }
+
+  goToBottomMessages() {
+    const chatContainer = this.el.querySelector('.chat-container');
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
+  }
+
+  valueSubmitted(ev){
+    this.chatSubmit.emit(ev.detail);
+  }
 
   render() {
     let users = [];
@@ -23,7 +40,7 @@ export class BubbleChat {
     for(let i = 0; i < this.messageList.length; i++) {
       // set time property
       messages.push(
-        <bubble-message user={this.user} message={this.messageList[i].message}></bubble-message>
+        <bubble-message user={this.messageList[i].user} message={this.messageList[i].message}></bubble-message>
       );
     }
 
@@ -89,11 +106,11 @@ export class BubbleChat {
             </div>
           </div>
           {/* Chat messages */}
-          <div class="px-6 py-4 flex-1 overflow-y-scroll">
+          <div class="px-6 py-4 flex-1 overflow-y-scroll chat-container">
             {messages}
           </div>
           <div class="pb-6 px-4 flex-none">
-            <bubble-input></bubble-input>
+            <bubble-input onValueSubmit={this.valueSubmitted.bind(this)} value={this.chatValue} placeholder={this.chatPlaceHolder}></bubble-input>
           </div>
         </div>
       </div>

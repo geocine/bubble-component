@@ -28,6 +28,8 @@ declare global {
 
   namespace StencilComponents {
     interface BubbleChat {
+      'chatPlaceHolder': string;
+      'chatValue': string;
       'messageList': Array<any>;
       'user': string;
       'userList': Array<any>;
@@ -53,7 +55,10 @@ declare global {
   }
   namespace JSXElements {
     export interface BubbleChatAttributes extends HTMLAttributes {
+      'chatPlaceHolder'?: string;
+      'chatValue'?: string;
       'messageList'?: Array<any>;
+      'onChatSubmit'?: (event: CustomEvent) => void;
       'user'?: string;
       'userList'?: Array<any>;
     }
