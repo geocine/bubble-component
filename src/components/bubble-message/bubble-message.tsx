@@ -1,4 +1,4 @@
-import { Component, Prop, State } from '@stencil/core';
+import { Component, Prop, State, h } from '@stencil/core';
 
 @Component({
   tag: 'bubble-message',
@@ -6,21 +6,22 @@ import { Component, Prop, State } from '@stencil/core';
   shadow: false
 })
 export class BubbleMessage {
-
   @Prop() user: string;
   @Prop() message: string;
-  
+
   @State() time: string;
   timer: any;
   startDate;
 
-  getTimeAgo(value: string){
+  getTimeAgo(value: string) {
     this.removeTimer();
     const d = new Date(value);
     const now = new Date();
     const seconds = Math.round(Math.abs((now.getTime() - d.getTime()) / 1000));
-    const timeToUpdate = Number.isNaN(seconds) ? 1000 : this.getSecondsUntilUpdate(seconds) * 1000;
-    this.timer = setTimeout(() => { 
+    const timeToUpdate = Number.isNaN(seconds)
+      ? 1000
+      : this.getSecondsUntilUpdate(seconds) * 1000;
+    this.timer = setTimeout(() => {
       this.time = this.getTimeAgo(this.startDate);
     }, timeToUpdate);
     const minutes = Math.round(Math.abs(seconds / 60));
@@ -62,7 +63,7 @@ export class BubbleMessage {
       this.timer = null;
     }
   }
-  
+
   getSecondsUntilUpdate(seconds: number) {
     const min = 60;
     const hr = min * 60;
@@ -93,15 +94,20 @@ export class BubbleMessage {
   render() {
     return (
       <div class="flex items-start mb-4 text-sm">
-        <img src={`https://ui-avatars.com/api/?name=${this.user}&size=40`} class="w-10 h-10 rounded mr-3" />
+        <img
+          src={`https://ui-avatars.com/api/?name=${this.user}&size=40`}
+          class="w-10 h-10 rounded mr-3"
+        />
         <div class="flex-1 overflow-hidden">
           <div>
             <span class="font-bold">{this.user}</span>
             <span class="text-grey text-xs"> {this.time}</span>
           </div>
           <p class="text-black leading-normal">{this.message}</p>
-          <div class="hidden bg-grey-lighter border border-grey-light text-grey-darkest text-sm font-mono rounded p-3 mt-2 whitespace-pre overflow-scroll">.marquee-lightspeed {'{'} -webkit-marquee-speed: fast; {'}'}
-                  .marquee-lightspeeder {'{'} -webkit-marquee-speed: faster; {'}'}</div>
+          <div class="hidden bg-grey-lighter border border-grey-light text-grey-darkest text-sm font-mono rounded p-3 mt-2 whitespace-pre overflow-scroll">
+            .marquee-lightspeed {'{'} -webkit-marquee-speed: fast; {'}'}
+            .marquee-lightspeeder {'{'} -webkit-marquee-speed: faster; {'}'}
+          </div>
         </div>
       </div>
     );

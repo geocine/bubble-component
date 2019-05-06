@@ -1,4 +1,4 @@
-import { Component, Prop, Element, EventEmitter, Event } from '@stencil/core';
+import { Component, Prop, Element, EventEmitter, Event, h } from '@stencil/core';
 
 @Component({
   tag: 'bubble-chat',
